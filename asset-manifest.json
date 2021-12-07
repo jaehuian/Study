@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/jaehuian/Study/movie_app_2020/static/css/main.8bdc0238.chunk.css",
+    "main.js": "/jaehuian/Study/movie_app_2020/static/js/main.4bb14137.chunk.js",
+    "main.js.map": "/jaehuian/Study/movie_app_2020/static/js/main.4bb14137.chunk.js.map",
+    "runtime-main.js": "/jaehuian/Study/movie_app_2020/static/js/runtime-main.fe865528.js",
+    "runtime-main.js.map": "/jaehuian/Study/movie_app_2020/static/js/runtime-main.fe865528.js.map",
+    "static/js/2.1aea2790.chunk.js": "/jaehuian/Study/movie_app_2020/static/js/2.1aea2790.chunk.js",
+    "static/js/2.1aea2790.chunk.js.map": "/jaehuian/Study/movie_app_2020/static/js/2.1aea2790.chunk.js.map",
+    "index.html": "/jaehuian/Study/movie_app_2020/index.html",
+    "static/css/main.8bdc0238.chunk.css.map": "/jaehuian/Study/movie_app_2020/static/css/main.8bdc0238.chunk.css.map",
+    "static/js/2.1aea2790.chunk.js.LICENSE.txt": "/jaehuian/Study/movie_app_2020/static/js/2.1aea2790.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe865528.js",
+    "static/js/2.1aea2790.chunk.js",
+    "static/css/main.8bdc0238.chunk.css",
+    "static/js/main.4bb14137.chunk.js"
+  ]
+}
