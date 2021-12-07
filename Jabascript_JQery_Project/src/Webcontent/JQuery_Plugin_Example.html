@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 제이쿼리 테마 적용(JQuery UI) -->
+<script src="CSS/tema/jquery-ui.min.js"></script>
+<!-- 제이쿼리 박스 슬라이더 적용 (bxslider) -->
+<script src="CSS/bxslider/dist/jquery.bxslider.min.js"></script>
+<!-- 박스 슬라이더 스타일 적용 -->
+<link rel="stylesheet" href="CSS/bxslider/dist/jquery.bxslider.min.css">
+
+<!-- 
+cdnjs : 제이쿼리 쿠키 플러그인
+ -->
+<style>
+.layer_popup{
+position:absolute;
+left:50px;
+top:50px;
+}
+</style>
+<script>
+/* 제이쿼리 테마 적용 */
+$(function(){
+	$(".layer_popup").draggable();
+});
+
+$(function(){
+	$("#startDate").datepicker({
+		minDate:+1,
+		maxDate:"+1M"
+	});
+});
+
+/* 제이쿼리 박스 슬라이더 적용 */
+ $(function(){
+	$('.slide_gallery').bxSlider({
+		auto:true,
+		autoControls:true,
+		stopAutoOnClick:true,
+		pager:true
+	});
+ });
+ 
+ /* 플러그인 제작 ($.fn.extend() 메서드) */
+ /*
+ $.fn.extend({
+	 확장함수명: fuction(매개변수....){
+		 $(this);
+		 자바스크립트 코드
+	 }
+ });
+ 
+ $.fn.확장함수명 = function(매개변수...){...}
+ */
+ $(function(){
+	$.fn.open=function(evenType,message){
+		var ts=$(this);
+		$.each(ts,function(i,o){
+			$(o).on(evenType, function(){
+				alert(message);
+			});
+		});
+	}
+	 $(".btn1").open("mouseover","welcome!");
+	 $(".btn2").open("click","hello!");
+ });
+</script>
+</head>
+<body>
+<!-- 
+<div class="layer_popup">
+	<img src="CSS/tema/images/ui-icons_444444_256x240.png" alt="">
+</div>
+-->
+
+<p>
+<label for="startDate">날짜 선택</label>
+<input type="text" name="startDate" id="startDate">
+</p>
+
+<div id="gallery_wrap">
+<ul class="slide_gallery">
+	<li><img src="Img/android.png" alt=""></li>
+	<li><img src="Img/macintosh.png" alt=""></li>
+	<li><img src="Img/windows.png" alt=""></li>
+</ul>
+</div>
+
+<p><button class="btn1">버튼1</button></p>
+<p><button class="btn2">버튼2</button></p>
+<p><button class="btn3">버튼3</button></p>
+</body>
+</html>

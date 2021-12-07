@@ -1,0 +1,41 @@
+@charset "EUC-KR";
+
+h1{
+	color: white;
+	font-size: 1em; /*글자 크기*/
+	background: #222;
+	margin: 0;
+	padding: 10px
+}
+
+h2{
+	color: #ff0000;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+p{
+	font-size:1.5em;
+	line-height:2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.accent{
+	color:blue;
+}
+.smalltest{
+	font-size:0.7em;
+}
+
+/*id 선택자*/
+#container{
+	width:650px; /*너비*/
+	margin:0 auto; /*가로로 중앙에 배치*/
+	padding:5px; /*테두리와 내용 사이의 패딩 여백*/
+}
+
+#check{
+	width:640px; /*너비 - 그림 너비 값에 맞춤*/
+	border:1px solid #ccc; /*테두리*/
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+/* html() / text() 메서드*/
+$(function(){
+	/*id 값이 "sec_1"인 요소의 하위 요소를 문자열로 가져와 result_1에 저장*/
+	var result_1=$("#sec_1").html();
+	console.log(result_1);
+	/*id 값이 "sec_1"인 요소의 하위 요소 중 <p> 요소의 하위 요소를 새 요소로 바꾼다*/
+	$("#sec_1 p").html("<a href=\"#\">Text1</a>");
+	/*id 값이 "sec_2"인 요소의 텍스트를 result_2에 저장*/
+	var result_2=$("#sec_2").text();
+	console.log(result_2);
+	/*
+	id 값이 "sec_2"인 요소의 하위 요소 중 <h2>요소의 하위 요소를 모두 제거합니다. 
+	그런 다음 새로운 텍스트를 생성합니다.
+	*/
+	$("#sec_2 h2").text("text()");
+});
+
+/* attr() / removeAttr() 메서드 */
+$(function(){
+	/*id 값이 "sec_3"인 요소의 하위 <img> 요소를 선택하여 "src" 값을 srcVal에 저장*/
+	var srcVal=$("#sec_3 img").attr("src");
+	console.log(srcVal);
+	
+	/*id 값이 "sec_3"인 요소의 하위 <img> 요소를 선택하여 각각의 값을 지정한 값으로 바꾸거나 새로 지정*/
+	$("#sec_3 img")
+	.attr({
+		"width":200,
+		"src":srcValreplace("1.jpg","2.jpg"),
+		"alt":"바위"
+	}).removeAttr("border");
+});
+
+/* addClass() / removeClass() / toggleClass() / hasCalss() 메서드 */
+/*
+ addClass() : 선택한 요소에 클래스를 생성
+ removeClass() : 선택한 요소에서 지정한 틀래스 삭제
+ toggleClass() : 선택한 요소에 지정한 클래스가 없으면 생성하고 있을 경우에는 삭제한다
+ hasClass() : 선택한 요소에 지정한 클래스가 있으면 true를 반환하고 없으면 flase를 반환한다
+ 
+ $("요소 선택").addClass("class 값");
+ $("요소 선택").removeClass("class 값");
+ $("요소 선택").toggleClass("class 값");
+ $("요소 선택").hasClass("class 값");
+ */
+ 
+ /*val() 메서드*/
+ /*
+ 선택한 폼 요소의 vale 속성값을 가져오거나 새 값을 적용할 때 사용합니다.
+ $("요소 선택").val();
+ $("요소 선택").val("새 값");
+ */
+ 
+ /*proop() 메서드*/
+ /*
+ 선택한 폼 요소(선택 상자, 체크 박스, 라디오 버튼)의 상태 속성값을 가져오거나 새롭게 설정할 때 사용한다.
+ 
+ $("요소 선택").prop("[checked | select]");
+ $("요소 선택").prop("[checked | select]");
+ $("요소 선택").prop("[tagName | nodeType | selectedIndex | defaultValue]");
+ */
+ 
+ /*수치 조작 메서드*/
+ /*요소의 높이 / 너비 메서드*/
+ /*
+ height(), width() 메서드는 여백 및 선 두께를 제외한 순수 요소의 너빗값을 계산한다
+ innerHeight(), innerWidth() 메서드는 여백을 포함한 요소의 높잇값과 너빗갑을 계산한다
+ outerHeight(), outerWidh() 메서드는 여백 및 선을 포함한 요소의 높잇값과 너빗값을 계산한다
+ 
+ $(요소 선택).height() / width();
+ $(요소 선택).innerHeight() / innerWidth();
+ $(요소 선택).outerHeight() / outerWidth();
+ */
+ 
+ /*요소 위치 메서드*/
+ /*
+ position() 메서드는 포지션 기준이 되는 요소를 기준으로 선택한 요소에서 
+ 가로/세로로 떨어진 위치의 좌푯값을 반환하거나 변경할 때 사용
+ offset() 메서드는 문서(document)를 기준으로 선택한 요소의 
+ 가로/세로로 떨어진 위치의 좌푯값을 반환하거나 변경할 때 사용
+ 
+ $(요소 선택).position().[left | right | top | bottom]
+ $(요소 선택).offset().[left | top]
+ */
+ 
+ /*스크롤바 위치 메서드*/
+ /*
+ 브라우저의 스크롤바가 수직/수평으로 이동한 위칫값을 불러오거나 변경할 때 사용합니다.
+ 
+ $(요소 선택).scrollTop(); 
+ $(요소 선택).scrollLeft();
+ */
+ 
+ /*객체 편집 메서드*/
+ /*before() / insertBefore() / after() / insertAfter() 메서드*/
+ /*
+ before(), insertBefore() 메서드는 선택한 요소의 이전 위치에 새 요소를 생성하고
+ after(), insertAfter() 메서드는 선택한 요소의 다음 위치에 새 요소를 생성한다
+ 
+ $("요소 선택").before("새 요소")
+ $("새 요소").innerBefore("요소 선택")
+ $("요소 선택").after("새 요소")
+ $("새 요소").innerAfter("요소 선택")
+ */
+ 
+ /*append() / appendTo() / prepend() / prependTo() 메서드*/
+ /*
+ append(), appendTo() 메서드는 선택한 요소 내의 마지막 위치에 새 요소를 생성
+ prepend(), prependTo() 메서드는 선택한 요소 내의 앞 위치에 새 요소를 생성
+ 
+ $(요소 선택).append(새 요소)
+ $(새 요소).appendTo(요소 선택)
+ $(요소 선택).prepend(새 요소)
+ $(새 요소).prependTo(요소 선택)
+ */
+ 
+ /*clone() / enpty() / remove() 메서드*/
+ /*
+ clone() : 선택하 요소 복제
+ empty() : 선택한 요소의 모든 하위 요소를 삭제
+ remove() : 선택한 요소를 삭제
+ 
+ $("요소 선택").clone([true | false])
+ $("요소 선택").empty()
+ $("요소 선택").remove()
+ */
+ 
+ /*unwrap() / wrap() / wrapAll() / wrapInner() 메서드*/
+ /*
+ unwrap() : 선택한 요소의 부모 요소를 삭제한다
+ wrap() : 선택한 요소를 각각 새 요소로 감싼다
+ wrapAll() : 선택한 요소를 한꺼번에 새 요소로 감싼다
+ wrapInner() : 선택한 요소의 모든 하위 요소를 새 요소로 감싼다
+ 
+ $("요소 선택").unwrap();
+ $("요소 선택").wrap(새 요소);
+ $("요소 선택").wrapAll(새 요소);
+ $("요소 선택").wrapInner(새 요소);
+ */
+</script>
+</head>
+<body>
+<h1><strong>객체 조작 및 생성</strong></h1>
+<section id="sec_1">
+<h2><em>html</em></h2>
+<p>내용1</p>
+</section>
+<section id="sec_2">
+<h2><em>텍스트</em></h2>
+<p>내용2</p>
+</section>
+
+<h1><strong>객체 조작 및 생성</strong></h1>
+<section id="sec_3">
+<h2>이미지 속성</h2>
+<p><img src="Img/math_img_1.jpg" alt="가위" border="2"></p>
+</section>
+</body>
+</html>

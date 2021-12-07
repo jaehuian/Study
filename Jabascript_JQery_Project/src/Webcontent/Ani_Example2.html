@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+p{width: 110px;text-align:center;}
+.txt1{background-color:aqua;}
+.txt2{background-color:pink;}
+.txt3{background-color:orange;}
+.txt4{background-color:green;}
+.txt5{background-color:gold;}
+.txt6{
+	width:50px;
+	text-align:center;
+	background-color:aqua;
+}
+</style>
+<script>
+/*애니메이션 효과 제어 메서드*/
+/*
+ stop() : 현재 실행 중인 효과를 모두 정지시킴
+ 		$("요소 선택").stop(); - 진행중인 첫 번째 애니메이션만 정지
+ 		$("요소 선택").stop(clearQueue, finish); 
+ 			- 대기중인 애니메이션 제거/진행중인 애니메이션 강제 종료 (true/false 값 사용)
+ 		
+ delay() : 지정한 시간만큼 지연했다가 애니메이션을 진행함
+ 		$("요소 선택").delay(지연 시간).애니메이션 효과 메서드();
+ 
+ queue() : 큐에 사용자 정의 함수를 추가하거나 큐에 대기 중인 함수를 배열에 담아 반환한다
+ 		queue() 메서드 이후의 애니메이션 효과 메서드는 모두 취소한다
+ clearQueue() : 큐에서 처음으로 진행하고 있는 애니메이션만 제외하고 대기 중인 애니메이션은 모두 제거한다
+ dequeue() : queue() 메서드를 이용하면 대기하고 있는 애니메이션 메서드는 제거된다
+ 			de-queue() 메서드를 이용하면 메서드가 제거되는 것을 막을 수 있다.
+ finish() : 선택한 요소의 진행 중인 애니메이션을 강제로 완료 시점으로 보낸 후 종료한다
+ */
+ /*stop()*/
+ $(function(){
+	$(".txt1")
+	.animate({marginLeft:"300px"},1000);
+	
+	$(".txt2").delay(3000)
+	.animate({marginLeft:"300px"},1000);
+	
+	$(".btn1").on("click",moveElement);
+	
+	function moveElement(){
+		$(".txt3")
+		.animate({marginLeft:"+=50px"},800);
+		
+		$(".txt4")
+		.animate({marginLeft:"+=50px"},800);
+		$(".txt4").stop();
+		
+		$(".txt5")
+		.animate({marginLeft:"+=50px"},800);
+		$(".txt5").stop(true,true);
+	}
+ });
+ /*queue() / dequeue()*/
+$(function(){
+	$(".txt6")
+	.animate({marginLeft:"200px"},1000)
+	.animate({marginTop:"200px"},1000)
+	.queue(function(){
+		$(this).css({background:"red"});
+		$(this).dequeue();
+	})
+	.animate({marginLeft:0},1000)
+	.animate({marginTop:0},1000);
+});
+</script>
+</head>
+<body>
+<p class="txt1">효과</p>
+<p class="txt2">효과2<br>delay(3000)</p>
+<p><button class="btn1">50px 전진</button></p>
+<p class="txt3">효과3</p>
+<p class="txt4">효과4<br>stop()</p>
+<p class="txt5">효과5<br>stop(true,true)</p>
+
+<p class="txt6">내용1</p>
+</body>
+</html>

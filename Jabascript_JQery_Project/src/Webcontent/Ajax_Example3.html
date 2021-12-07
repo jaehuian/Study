@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+/*
+ 다른 사이트에서 데이터를 서로 주고 받기 위한 방법은 서버 언어를 사용해 데이터를 가져오거나
+ JSONP를 사용하는 방법이 있다.
+ 서버 언어를 사용하는 방법은 서로 다른 사이트에서 데이터를 요청하고 ajax로 가공하면 된다.
+ JSONP를 사용하는 방법은 '동일 출처 보안 정책'을 피해야 하고 
+ 관리자의 외부 서버 접근이 가능해야 한다는 전제 조건이 필요하다.
+ */
+ /*RSS(신문사 새 소식) 연동하기*/
+$(function() {
+	$.ajax({
+		url:"PHP/news.php",
+		dataType:"xml",
+		success: function(data) {
+			var $items = $(data).find("item");
+			if($items.length > 0) {
+				$items = $items.slice(0,10);
+				var $ulTag = $("<ul/>");
+				$.each($items, function(i, o) {
+					var $title = $(o).find("title").text();
+					var $link = $(o).find("link").text();
+					
+					var $aTag = $("<a/>")
+					.attr({
+						"href":$link,
+						"target":"_blank"
+						})
+					.text($title);
+
+					var $liTag = $("<li/>")
+					.append($aTag);
+
+					$ulTag.append($liTag);
+				});
+				$(".wrap").append($ulTag);
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+<!-- 
+PHP 설치 문제인지 작동안됨 소스문제는 아닌거 같음
+-->
+<div class="wrap"></div>
+</body>
+</html>

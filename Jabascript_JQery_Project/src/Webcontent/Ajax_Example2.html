@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+/*Ajax로 JSON 데이터 바인딩하기*/
+$(function(){
+	$.ajax({
+		/*
+		mockaroo에서 가짜 회원 정보 JSON 파일 생성 및 다운
+		*/
+		url:"DATA/MOCK_DATA.json",
+		dataType:"json",
+		success:function(data){
+			if(data.length>0){
+				var tb=$("<table>");
+				for(i in data){
+					var $id=data[i].id;
+					var $first_name=data[i].first_name;
+					var $last_name=data[i].last_name;
+					var $email=data[i].email;
+					var $gender=data[i].gender;
+					var row=$("<tr/>").append(
+						$("<td/>").text($id),
+						$("<td/>").text($first_name),
+						$("<td/>").text($last_name),
+						$("<td/>").text($email),
+						$("<td/>").text($gender)
+					);
+					tb.append(row);
+				}
+				$(".wrap").append(tb);
+			}
+		}
+	});
+});
+
+/*Ajax로 XML 데이터 바인딩하기*/
+$(function(){
+	$.ajax({
+		url:"DATA/dataset.xml",
+		dataType:"xml",
+		success:function(data){
+			var $data=$(data).find("record");
+			if($data.length>0){
+				var tb=$("<table/>");
+				$.each($data, function(i,o){
+					var $id=$(o).find("id").text();
+					
+					var $first_name=$(o).find("first_name").text();
+					
+					var $last_name=$(o).find("last_name").text();
+					
+					var $email=$(o).find("email").text();
+					
+					var $gender=$(o).find("gender").text();
+					
+					var row=$("<tr/>").append(
+							$("<td/>").text($id),
+							$("<td/>").text($first_name),
+							$("<td/>").text($last_name),
+							$("<td/>").text($email),
+							$("<td/>").text($gender)
+					);
+					tb.append(row);
+				});
+				$(".wrap2").append(tb);
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+
+<!-- 
+<div class="wrap"></div>
+-->
+
+<div class="wrap2"></div>
+</body>
+</html>

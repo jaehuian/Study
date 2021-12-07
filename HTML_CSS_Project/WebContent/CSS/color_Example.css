@@ -1,0 +1,194 @@
+@charset "EUC-KR";
+/*
+색상 표현법
+16진수: #ff00ff
+rgb: rgb(255,0,0)
+rgba: rgba(255,0,0,5) -투명도 포함
+hsl: hsl(360,100%,0%) -색상,채도,밝기
+hsla: hsla(360,100%,0%,0.5) -투명도 포함
+*/
+
+/*배경색 - 배경색은 상속되지x*/
+body{ background-color:#0094ff; }
+
+/*배경 적용 범위 조절*/
+/*
+background-clip: border-box | padding-box | content-box
+
+속성 값
+border-box: 박스 모델의 가장 외각인 테두리까지 적용됩니다
+padding-box: 박스 모델에서 테두리를 뺀 패딩 범위까지 적용합니다.
+content-box: 박스 모델에서 내용 부분에만 적용합니다.
+*/
+.bg1{ 
+	background-color:white;
+	background-clip:border-box; 
+}
+
+/*웹 요소에 배경 이미지 넣기*/
+#area{
+	background-image:url('../Img/beach.jpg');
+	height:150px;
+}
+
+/*배경 이미지 반복 방법 지정*/
+/*
+background-repeat: repeat | repeat-x | repeat-y | no-repeat
+
+속성 값
+repeat: 브라우저 화면에 가득 찰 때까지 배경 이미지를 가로와 세로로 반복합니다.
+repeat-x: 브라우저 창 너비와 같아질 때까지 배경 이미지를 가로로 반복합니다.
+repeat-y: 브라우저 창 높이와 같아질 때까지 배경 이미지를 세로로 반복합니다.
+no-repeat: 배경 이미지를 한번만 표시하고 반복하지 않습니다.
+*/
+
+/*배경 이미지 크기 조절하기*/
+/*
+background-size: auto | contain | cover | <크기 값> | <백분율>
+
+속성 값
+auto: 원래 배경 이미지 크기만큼 표시됩니다.
+contain: 요소 안에 배경 이미지가 다 들어오도록 이미지를 확대/축소 합니다.
+cover: 배경 이미지로 요소를 모두 덮도록 이미지를 확대/축소합니다
+<크기 값>: 너비값과 높이 값을 지정합니다. 너비 값만 지정할 경우, 원래 배경 이미지 크기를 기준으로 축소/확대 비율을 자동으로 계산해 높이 값을 지정합니다.
+<백분율>: 배경 이미지가 들어갈 요소의 크기를 기준으로 백분율 값을 지정하고 그 크기에 맞도록 배경 이미지를 확대하거나 축소합니다.
+*/
+.bg2{
+	background:url('../Img/beach.jpg') no-repeat left top;
+	background-size: 150px;
+	height:150px;
+}
+
+/*배경 이미지 위치 조절하기*/
+/*
+background-position: <수평위치> <수직위치>;
+
+수평위치: left | center | right | <백분율> | <길이 값>
+수직 위치: top | center | bottom | <백분율> | <길이 값>
+*/
+.bg3{
+	background-image:url('../Img/beach.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 150px;
+	height:150px;
+}
+
+/*배경 이미지 배치할 기준 조절하기*/
+/*
+background-origin: border-box | padding-box | content-box
+
+속성 값
+border-box: 박스 모델의 가장 외각인 테두리가 기준이 됩니다.
+padding-box: 박스 모델에서 테두리를 뺀 패딩이 기준이 됩니다.
+content-box: 박스 모델에서 내용 부분이 기준이 됩니다
+*/
+.bg4{
+	background-image:url('../Img/beach.jpg');
+	background-origin:padding-box;
+	background-repeat: no-repeat;
+	background-size: 150px;
+	height:150px;
+}
+
+/*배경 이미지 고정하기*/
+/*
+background-attachment: scroll | fixed
+
+속성 값
+scroll: 화면 스크롤과 함께 배경 이미지도 스크롤됩니다. 기본 값입니다.
+fixed: 화면이 스크롤되더라도 배경 이미지는 고정됩니다.
+*/
+.bg5{
+	background-image:url('../Img/beach.jpg');
+	background-repeat: no-repeat;
+	background-size: 150px;
+	height:150px;
+	background-position: right bottom;
+	background-attached: fixed;
+}
+
+/*속성 하나로 배경 이미지 제어*/
+.bg6{
+	background:url('../Img/beach.jpg') no-repeat fixed right bottom;
+}
+
+/*그라데이션 브라우저 접두사*/
+/*
+-webkit- : 사파리 5.1~6.0
+-moz- : 파이어폭스 3.6~15
+-o- : 오페라 11.1~12.0
+*/
+
+/*선형 그라데이션*/
+/*
+linear-gradient( <각도> to <방향>, color-stop, [color-stop,...]);
+
+방향
+to top: 아래에서 시작해 위로 그라데이션이 만들어집니다.
+to left: 오른쪽에서 시작해 왼쪽으로 그라데이션이 만들어집니다.
+to right: 왼쪽에서 시작해 오른쪽으로 그라데이션이 만들어집니다.
+to bottom: 위에서 시작해 아래로 그라데이션이 만들어집니다.
+*/
+.grad{
+	background: blue; /*그라데이션을 지원하지 않는 브라우저용*/
+	background: -webkit-linear-gradient(left top, blue, white); /*시작위치 지정*/
+	background: -moz-linear-gradient(right bottom, blue, white); /*끝위치 지정*/
+	background: -o-linear-gradient(right bottom, blue, white); /*끝위치 지정*/
+	background: linear-gradient(to right bottm, blue, white); /*표준 구문, 그라데이션 방향 지정*/
+}
+.grad2{
+	background: linear-gradient(45deg, #ff0000,#ffffff); /*각도*/
+}
+/*색상 중지 점*/
+/*방향,시작 색상, 중지 점 색상과 위치, 끝 색상*/
+.grad3{
+	background: linear-gradient(top, #06f, white 30%, #06f);
+}
+
+/*원형 그라데이션*/
+/*
+radial-gradient(<최종 모양> <크기> at <위치>, color-stop, [color-stop...])
+*/
+.grad4{
+	background: radial-gradient(white,yellow,red); /*모양을 지정하지 않아 타원으로 나타남*/
+}
+.grad5{
+	background: radial-gradient(circle,white,yellow,red);
+}
+/*위치(원의 중심) 지정*/
+.grad6{
+	background:blue;
+	background: -webkit-radial-gradient(10% 10%,circle,white,yellow,red);
+	background: -moz-radial-gradient(10% 10%,circle,white,yellow,red);
+	background: -o-radial-gradient(10% 10%,circle,white,yellow,red);
+	background: radial-gradient(circle at 10% 10%,white,yellow,red);
+}
+/*크기(원의 크기)*/
+/*
+그라데이션 가장자리 위치 지정
+closest-side
+closest-corner
+farthest-side
+farthest-corner
+*/
+.grad7{
+	background:blue;
+	background: -webkit-radial-gradient(10% 10%,circle closest-side,white,yellow,red);
+	background: -moz-radial-gradient(10% 10%,circle closest-side,white,yellow,red);
+	background: -o-radial-gradient(10% 10%,circle closest-side,white,yellow,red);
+	background: radial-gradient(circle closest-side at 10% 10%,white,yellow,red);
+}
+
+/*그라데이션 반복*/
+.grad8{
+	background:repeating-linear-gradient(yellow,red 20px);
+}
+.grad9{
+	background:repeating-radial-gradient(circle,white,#ccc,10%);
+}
+/*섞임 방지 - 시작과 끝색을 명확히 지정*/
+.grad10{
+	/*yellow 0~20px 까지 채우기, red 20~40px 까지 채우기*/
+	background:repeating-linear-gradient(yellow,yellow 20px,red 20px,red 40px);
+}

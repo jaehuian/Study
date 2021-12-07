@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+/*단독 이벤트 등록 메서드(click)*/
+/*
+$("이벤트 대상 선택").이벤트 등록 메서드(function(){
+	자바스크립트 코드;
+});
+ */
+ 
+ /*그룹 이벤트 등록 메서드(on)*/
+ /*
+ on() 메서드 등록 방식1
+ $("이벤트 대상 선택").on("이벤트 종류1 이벤트 종류2 .... 이벤트 종류n",
+		 function(){
+	 자바스크립트 코드;
+ });
+ 
+ on() 메서드 등록 방식2
+ $("이벤트 대성").on({
+	"이벤트 종류1 이벤트 종류2 ... 이베트 종류n":function(){
+		자바스크립트 코드;
+	} 
+ });
+ 
+ on() 메서드 등록 방식3
+ $("이벤트 대상 선택").on({
+	 "이벤트 종류1":function(){ 자바스크립트 코드;1 },
+	 "이벤트 종류2":function(){ 자바스크립트 코드;2 },
+	 ...
+	 "이벤트 종류n":function(){ 자바스크립트 코드;n }
+ });
+ */
+ $(function(){
+	 $(".btn1").click(function(){
+		 $(".btn1").parent().next()
+		 .css({"color":"#f00"});
+	 });
+	 $(".btn2").on({
+			"mouseover focus":function(){
+				$(".btn2").parent().next()
+				.css({"color":"#0f0"});
+			},
+			"mouseout blur":function(){
+				$(".btn2").parent().next()
+				.css({"color":"#000"});
+			},
+	}); 
+ });
+ 
+ /*강제 이벤트*/
+ /*
+ 핸들러에 의해 자동으로 이벤트 발생
+ 
+ $("이벤트 대상").단독 이벤트 등록 메서드();
+ $("이벤트 대상").trigger("이벤트 종류");
+ */
+ $(function(){
+	 //버튼 클릭시 실행되는 함수
+	$(".btn3").click(function(){
+		$(".btn3").parent().next()
+		.css({"color":"#f00"});
+	}); 
+
+	//마우스를 올릴경우 실행되는 함수
+	$(".btn4").on({
+		"mouseover focus":function(){
+			$(".btn4").parent().next()
+			.css({"color":"#0f0"});
+		}
+	});
+	
+	//버튼 클릭 함수 강제로 실행
+	$(".btn3").click();
+	//마우스 올림 트리거 적용 => 마우스 올림 함수 강제 실행
+	$(".btn4").trigger("mouseover");
+ });
+ 
+ /*이벤트 제거*/
+ /*
+ $("이벤트 대상").off("제거할 이벤트 종류");
+ */
+ $(function(){
+	 $(".btn5").click(function(){
+		 $(".btn5").parent().next()
+		 .css({"color":"#f00"});
+	 });
+	 
+	 $(".btn6").on({
+		"mouseover focus":function(){
+			$(".btn6").parent().next()
+			.css({"color":"#0f0"});
+		} 
+	 });
+	 
+	 //이벤트 제거
+	 $(".btn5").off("click");
+	 $(".btn6").off("mouseover focus");
+ });
+ 
+ /*로딩 이벤트*/
+ /*ready() / load() 이벤트*/
+ /*
+ ready() : 사용자가 사이트를 방문할 때 요청한 HTML 문서 객체의 로딩이 끝나면 이벤트를 발생시킵니다.
+ load() : 외부에 연동된 소스의 로딩이 끝나면 이벤트를 발생시킵니다.
+ 
+ $(document).[ready | load](function(){ 자바스크립트 코드; });
+ $(document).on(["ready" | "load"], function(){ 자바스크립트 코드; });
+ */
+ $(function(){
+	 /*HTML 전체 요소가 로딩되면 이벤트 헨들러 실행(이미지 로딩 아직)*/
+	$(document).ready(function(){
+		var h1=$(".img1").height();
+		console.log("ready :",h1);
+	});
+	/*외부 소스(이미지)가 완전히 로딩되면 이벤트 핸들러가 실행(높이값 출력)*/
+	$(window).on("load",function(){
+		var h2=$(".img1").height();
+		console.log("load :",h2);
+	});
+ });
+ 
+ /*마우스 이벤트*/
+ /*click() / dblclick() 이벤트*/
+ /*
+ click : 선택한 요소를 클릭했을 때 이벤트를 발생시키거나 선택한 요소에 강제로 클릭 이벤트를 발생시 때 사용합니다.
+ dblclick : 선택한 요소를 연속해서 두 번 클릭했을 때 이벤트를 발생시키거나 선택한 요소에 강제로 더블클릭 이벤트를 발생시킬 때 사용한다.
+ 
+ $("이벤트 대상 선택").click(function(){ 자바스크립트 코드; });
+ $("이벤트 대상 선택").on("click",function(){ 자바 스크립트 코드; });
+ $("이벤트 대상 선택").click();
+ 
+ $("이벤트 대상 선택").dblclick(function(){ 자바스크립트 코드; });
+ $("이벤트 대상 선택").on("dblclick",function(){ 자바스크립트 코드; });
+ $("이벤트 대상 선택").dblclick();
+ */
+ 
+ /*<a>, <form> 태그에 클릭 이벤트 적요이 기본 이벤트 차단하기*/
+ /*
+ click(), dblclick() 이벤트를 등록하면 클릭할 때마다 a에 링크된 주소로 이동되는 문제가 나올 수 있다.
+ 기본 이벤트를 차단해 해결 가능
+ 
+ return false를 이용한 차단 방식
+ $("a 또는 form").이벤트 메서드(function(){
+	 자바스크립트 코드;
+	 return false;
+ });
+ 
+ preventDefault() 메서드를 이용한 차단 방식
+ $("a 또는 form").이벤트 메서드(function(e){
+	 e.preventDefault();
+	 자바스크립트 코드;
+ });
+ */
+ $(function(){
+	 $(".btn7").on("click", function(e){
+		 e.preventDefault();
+		 $(".txt1").css({"background-color":"#ff0"});
+	 });
+	 $(".btn8").on("click",function(e){
+		 $(".txt2").css({"background-color":"#0ff"});
+	 });
+	 $(".btn9").on("dblclick",function(){
+		 $(".txt3").css({"background-color":"#0f0"});
+	 });
+ });
+ 
+ /*mouseover() / mouseout() / hover() 이벤트*/
+ /*
+ mouseover() : 선택한 요소에 마우스 포인터를 올릴 때마다 이벤트를 발생
+ mouseout() : 선택한 요소에서 마우스 포인터가 벗어날 때마다 이벤트를 발생
+ hover() : 선택한 요소에 마우스 포인터가 올ㄹ아갈 때와 선택한 요소에서 벗어날 때 각각 이벤트를 발생시키며
+ 			이때 각각 다른 이벤트 핸들러를 실행시킨다 
+ */
+ $(function(){
+	 $(".btn10").on({
+		 "mouseover" : function(){
+			 $(".txt4").css({"background-color":"yellow"});
+		 },
+		 "mouseout" : function(){
+			 $(".txt4").css({"background":"none"});
+		 }
+	 });
+	 
+	 $(".btn11").hover(function(){
+		 /*마우스 오버시 적용할 함수*/
+		 $(".txt5").css({"background-color":"aqua"});
+		 },function(){
+			 /*마우스 아웃시 적용할 함수*/
+			 $(".txt5").css({"background":"none"});
+	 });
+ });
+ 
+ /*mouseenter() / mouseleave() 이벤트*/
+ /*
+ mouseenter() : 대상 요소의 강제 범위에 마우스 포인터가 들어오면 이벤트를 발생시킨다.
+ mouseleave() : 대상 요소의 경계 범위에서 마우스 포인터가 완전히 벗어나면 이벤트를 발생시킵니다.
+ */
+ $(function(){
+	 $("#box_1").on("mouseout",function(){
+		 $("#box_1").css({"background-color":"yellow"});
+	 });
+	
+	 $("#box_2").on("mouseleave",function(){
+		 $("#box_2").css({"background-color":"pink"});
+	 });
+ });
+ 
+ /*mousemove() 이벤트*/
+ $(function(){
+	 /*마우스가 움직이면 이벤트 객체를 매개변수로 받아온다*/
+	$(document).on("mousemove",function(e){
+		$(".posX").text(e.pageX);
+		$(".posY").text(e.pageY);
+	});
+ });
+</script>
+</head>
+<body>
+<p>
+	<button class="btn1">버튼	1</button>
+</p>
+<p>내용1</p>
+<p>
+	<button class="btn2">버튼2</button>
+</p>
+<p>내용2</p>
+<p>
+	<button class="btn3">버튼	1</button>
+</p>
+<p>내용1</p>
+<p>
+	<button class="btn4">버튼2</button>
+</p>
+<p>내용2</p>
+<p>
+	<button class="btn5">버튼	1</button>
+</p>
+<p>내용1</p>
+<p>
+	<button class="btn6">버튼2</button>
+</p>
+<p>내용2</p>
+
+<P>
+	<img src="Img/android.png" class="img1">
+</P>
+
+<p>
+	<a href="Img/android.png" class="btn7">버튼1</a>
+</p>
+<p class="txt1">내용1</p>
+<p><a href="Img/macintosh.png" class="btn8">버튼2</a></p>
+<p class="txt2">내용2</p>
+<p><button class="btn9">버튼3</button></p>
+<p class="txt3">내용3</p>
+
+<p>
+	<button class="btn10">Mouse Over/Mouse Out</button>
+</p>
+<p class="txt4">내용1</p>
+<p>
+	<button class="btn11">Hover</button>
+</p>
+<p class="txt5">내용2</p>
+
+<h1>mouseout</h1>
+<div id="box_1">
+	<p><a href="#">내용1</a></p>
+	<p><a href="#">내용2</a></p>
+	<p><a href="#">내용3</a></p>
+</div>
+<h1>mouseleave</h1>
+<div id="box_2">
+	<p><a href="#">내용4</a></p>
+	<p><a href="#">내용5</a></p>
+	<p><a href="#">내용6</a></p>
+</div>
+
+<h1>mousemove</h1>
+<p>X : <span class="posX">0</span>px</p>
+<p>Y : <span class="posY">0</span>px</p>
+</body>
+</html>

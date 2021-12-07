@@ -1,0 +1,342 @@
+@charset "EUC-KR";
+.origin{
+	width: 200px;
+	height: 134px;
+	border: 1px solid black;
+	float:left;
+	margin:40px;			
+}
+/*요소 이동시키기*/
+.movex:hover{ transform:translateX(50px); }
+.movey:hover{ transform:translateY(20px); }
+.movexy:hover{ transform:translate(10px,20px); }
+
+/*요소 확대/축소하기*/
+.scalex:hover{ transform: scaleX(1.2); }
+.scaley:hover{ transform: scaleY(1.5); }
+.scale:hover{ transform: scale(0.7); }
+
+/*요소 회전하기(2차원)*/
+.rotate1:hover{ transform:rotate(20deg); }
+.rotate2:hover{ transform:rotate(-40deg); }
+/*요쇼 회전하기(3차원)*/
+.origin2{
+	perspective:200px; /*원근감 표현을 위해 적용*/
+	width: 200px;
+	height: 134px;
+	border: 1px solid black;
+	float:left;
+	margin:40px;
+}
+.rotatex{ transform:rotateX(45deg); }
+.rotatey{ transform:rotateY(45deg); }
+.rotatez{ transform:rotateZ(45deg); }
+.rotatexyz{ transform:rotate3d(2.5, 1.2, -1.5, 45deg); }
+
+/*요소를 비틀어 왜곡하기*/
+.skewx:hover{ transform:skewX(30deg); }
+.skewy:hover{ transform:skewY(15deg); }
+.skewxy:hover{ transform:skew(-25deg,-15deg); }
+
+/*변형 기준점 설정*/
+/*
+transform-origin: <x축> <y축> <z축> | initial | inherit
+
+길이 값이나 백분율, left,center, right 중에서 사용할 수 있습니다
+*/
+.rose{ transform:rotateZ(10deg); }
+.ltop .rose{ transform-origin:left top; }
+.rtop .rose{ transform-origin:right top; }
+.lbottom .rose{ transform-origin:left bottom; }
+.rbottom .rose{ transform-origin:right bottom; }
+
+/*원근감 표현하기*/
+/*
+perspective: <크기> | none;
+
+원래 위치에서 사용자가 있는 방향으로 얼마나 이동하는지를 픽셀 크기로 지정합니다.
+
+perspective-origin: <x축 값> | <y축 값>
+
+웹 요소가 어디에 위치하는지를 지정합니다. 길이 값, 백분율, left, right, center 를 사용합니다. 기본 값은 50%입니다.
+*/
+#no-pers, #pers {
+	width:152px;
+	height:180px;
+	border:1px solid black;
+	margin:30px;
+	float:left;
+}
+.rotatex img{ transform:rotateX(50deg); }
+#pers{ perspective:300px; }
+
+/*3D 변형 적용하기*/
+/*
+transform-style: flat | preserve-3d
+
+속성 값
+flat: 하위 요소를 평면으로 처리합니다.
+preserve-3d: 하위 요소들에 3d효과를 적용합니다.
+*/
+#base div{
+	width:200px;
+	height:200px;
+}
+.container{
+	border:1px solid black;
+	perspective:300px;
+	margin-top:100px;
+	margin-left:100px;
+	float:left;
+}
+.box1{
+	background:#82cbd8;
+	transform:rotateY(45deg);
+}
+.box2{
+	background:#0d6097;
+	transform-origin:left top;
+	transform:rotateX(45deg);
+}
+#tr-style1{ transform-style:flat; }
+/*크로에선 적용됨, 이클립스 안됨*/
+#tr-style2{ transform-style:preserve-3d; }
+
+/*요소의 뒷면 표시하기*/
+/*
+backface-visibility: visible | hidden
+
+속성 값
+visible: 뒷면을 표시합니다. 기본 값입니다.
+hidden: 뒷면을 표시하지 않습니다.
+*/
+.box3{
+	background:#82cbd8;
+	transform:rotateY(135deg);
+}
+#back1{ backface-visibility:hidden; }
+#back2{ backface-visibility:visible; }
+
+/*트랜지션*/
+/*시간에 따라 웹 요소의 스타일 속성이 조금씩 바뀌는 것*/
+
+/*트랜지션을 적용할 속성 지정*/
+/*
+transition-property: all | none | <속성 이름>
+
+속성 값
+all: all 값을 사용하거나 transition-property를 생략할 경우, 요소의 모든 속성이 트랜지션 대사이 됩니다. 기본값입니다.
+none: 트랜지션 동안 아무 속성도 바뀌지 않습니다.
+<속성 이름>: 트랜지션 효과를 적용할 속성 이름을 지정합니다. 예를 들어 배경 색만 바꿀 것인지, 
+	width 값을 바꿀 것인지 원하는 대상만 골라 지정할 수 있습니다. 속성이 여러 개일 경우, 쉼표로 구분해 나열합니다.
+*/
+
+/*트랜지션 진행 시간 지정하기*/
+/*transition-duration: <시간>*/
+.tr1{
+	width:100px;
+	height:100px;
+	background-color:blue;
+	border:1px solid black;
+	clear:both;
+	transition-property: width, height;
+	transition-duration: 2s, 1s; /*너비 값은 2초, 높이값은 1초에 걸쳐 트랜지션*/
+}
+.tr1:hover{
+	width:200px;
+	height:120px;
+}
+.tr2{
+	/*2,3,2,3 초씩 적용됨*/
+	transition-property:background-color, transform, width, height;
+	transition-duradion:2s,3s;
+}
+.tr3{
+	width:100px;
+	height:100px;
+	background-color:red;
+	border:1px solid black;
+	transition-property: background-color, transform, width, height;
+	transition-duration:2s, 3s;
+}
+.tr3:hover{
+	width:200px;
+	height:200px;
+	background-color:#ff6e5f;
+	transform:rotate(180deg);
+}
+
+/*트랜지션 속도 곡선 지정하기*/
+/*
+transition-timing-function: linear | ease | ease-in | ease-out | 
+							ease-in-out | cubic-bezier(n,n,n,n)
+							
+속성 값
+linear: 시작부터 끝까지 똑같은 속도로 트랜지션을 진행합니다.
+ease: 처음에는 천천히 시작하고 점점 빨라지다가 마지막에는 천천히 끝냅니다. 기본 값입니다.
+ease-in: 시작을 느리게 합니다.
+ease-out: 느리게 끝냅니다.
+ease-in-out: 느리게 시작되고 느리게 끝냅니다.
+cubic-bezier(n,n,n,n): 베지에 함수를 직접 정의해 사용합니다. n에서 사용할 수 있는 값은 0~1입니다.
+*/
+
+/*지연 시간 설정*/
+/*
+transition-delay: <시간>
+*/
+#ex{
+	position:relative;
+	width:500px;
+	height:150px;
+	margin:0 auto;
+	border:1px solid #aaa;
+	border-radius:30px;
+	padding:20px;
+}
+#ex:hover .box{
+	transform:rotate(720deg);
+	margin-left:420px;
+}
+.tr4{
+	font-size:12px;
+	position:relative;
+	width:60px;
+	height:60px;
+	margin-bottom:10px;
+	background-color:#eee;
+}
+.tr4 p{
+	text-align:center;
+	padding-top:4px;
+}
+#no-delay{
+	transition-duration:3s;
+	border:1px solid #ff6a00;
+}
+#delay{
+	transition-duration:3s;
+	transition-delay:1s;
+	border:1px solid #006aff;
+}
+
+/*트랜지션 속성 한꺼번에 표기하기*/
+/*
+transition: <transition-property 값> | <transition-duration 값> |
+		<transition-timing-function 값> | <transition-delay 값>
+*/
+.tr5{
+	width:200px;
+	height:200px;
+	background-color:red;
+	background:1px solid black;
+	/*
+		transition-property: 기본 값(all)
+		transition-duration: 2초
+		transition-timing-function: ease-in
+		transition-delay:기본값 0
+	*/
+	transition:2s ease-in;
+}
+.tr5:hover{
+	width:100px;
+	height:100px;
+	background-color:#ff6e5f;
+	transform:rotate(270deg);
+}
+/*여러 변형 동시에 사용하기*/
+.tr6{
+	transform:scale(2) perspective(120px) rotateX(100deg);
+}
+
+/*애니메이션*/
+/*
+시작과 끝을 지정하면 중간 스타일을 자동으로 추가해 전체적으로 부드러운 움직임을 만들어낸다는 점은 transition과 비슷하다
+애니메이션은 키프레임을 삽입해 중간 스타일을 정의할 수 있다.
+*/
+
+/*애니메이션 지점 설정하기*/
+/*
+@keyframes <이름> {
+	<선택자> { <스타일> }
+}
+*/
+.ani{
+	width:100px;
+	height:100px;
+	background-color:blue;
+	animation-name:change-bg; /*change-bg 애니메이션 적용*/
+	animation-duration:3s; /*애니메이션 실행 시간 설정*/
+}
+@keyframes change-bg{
+	/*애니메이션 시작지점 스타일*/
+	/*form~to 또는 0%~100%로 정의할 수 있다*/
+	from{
+		background-color:blue;
+		border:1px solid black;
+	}
+	to{
+		background-color:#a5d6ff;
+		border:1px solid blue;
+		border-radius:50%;
+	}
+}
+
+/*애니메이션 방향 지정하기*/
+/*
+animation-direction: normal | alternate
+
+속성 값
+normal: 애니메이션을 끝까지 실행하면 원래 있던 위치로 돌아갑니다. 기본 값입니다.
+alternate: 애니메이션을 끝까지 실행하면 왔던 방향으로 되돌아가면서 애니메이션을 실행합니다.
+*/
+
+/*반복 횟수 지정하기*/
+/*
+animation-iteration-count: <숫자> | infinite
+
+속성 값
+<숫자>: 입력한 숫자만큼 반복합니다. 기본 값은 1입니다.
+infinite: 무한 반복합니다.
+*/
+.ani2{
+	margin-top:50px;
+	margin-left:100px;
+	padding:20px;
+	height:60px;
+	animation-name:moving;
+	animation-duration:3s;
+	animation-direction:normal;
+	animation-iteration-count:infinite;
+}
+@keyframes moving{
+	from{
+		width:200px;
+		background:#faef7c;
+		opacity:0.5;
+		transform:scale(0.5) rotate(15deg);
+	}
+	to{
+		width:400px;
+		background:#ff9400;
+		opacity:1;
+		transform:scale(1) rotate(0deg);
+	}
+}
+
+/*애니메이션 속도 곡선 지정하기*/
+/*
+animation-timing-function: linear | ease | ease-in | ease-out | 
+					ease-in-out | cubic-bezier(n,n,n,n)
+*/
+
+/*애니메이션 관련 속성 한꺼번에 표기하기*/
+/*
+animation: <animation-name> | <animation-duration> |
+		<animation-timing-function> | <animation-delay> |
+		<animation-iteration-count> | <animation-direction>
+*/
+.ani3{
+	/*,를 이용해 여러 애니메이션을 동시에 실행 가능꺌꺄*/
+	animation:moving 3s alternate infinite ease-in,
+		rotate 1.5s infinite alternate;
+}

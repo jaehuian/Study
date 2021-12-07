@@ -1,0 +1,223 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+
+.ng_font{
+	font-family: 'Gothic A1', 돋움;
+}
+
+/*웹폰트 정의*/
+/*.ttf파일을 woff 또는 eot로 변환후 사용*/
+/*
+@font-face{
+	font-family: 글꼴이름;
+	src:url(글꼴 파일 경로) format(파일 유형);
+}
+*/
+
+/*글자 크기*/
+/*
+font-size:<절대크기>|<상대크개>|<크기>|<백분율>
+단위
+em : 해당 글꼴의 대문자 M의 너비를 기준으로 크기를 조절합니다.
+ex : x-height. 해당 글꼴의 소문자 x의 높이를 기준으로 크기를 조절합니다.
+px : 픽셀, 모니터에 따라 상대적 크기가 됩니다.
+pt : 포인트. 일반 문서에서 많이 사용하는 단위입니다.
+*/
+
+h1.fontSize{ font-size:3em; }
+p.fontSize{ font-size: 1em; font-size:30px; }
+
+
+/*글자 굵기*/
+/*
+font-weight: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
+*/
+/*작은 대문자로 표시 - 대문자를 소문자 크기에 맞춰 표시*/
+/*
+font-variant: normal | small-caps
+*/
+.accent{
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+/*글자 스타일 지정*/
+/*
+font-style: normal | italic | oblique
+*/
+p.FontItalic{
+	font-style:italic;
+}
+p.FontNormal{
+	font-style: normal;
+}
+
+/*글꼴 스타일 한번에 묶어 표현*/
+/*
+font: <font-style><font-variant><font-weight><font-size/line-height><font-family> | caption | icon | menu |message-box | small-caption | status-bar
+
+키워드
+font-* : font-*로 시작하는 글꼴 관련 속성을 한꺼번에 나열합니다.
+caption : 캡션에 어울리는 글꼴 스타일로 표시합니다.
+icon : 아이콘에 어울리는 글꼴 스타일로 표시합니다.
+menu : 드롭다운 메뉴에 어울리는 글꼴 스타일로 표시합니다.
+message-box : 대화상자에 어울리는 글꼴 스타일로 표시합니다.
+small-caption : 작은 캡션에 어울리는 글꼴 스타일로 표시합니다.
+status-bar : 상태 표시줄에 어울리는 글꼴 스타일로 표시합니다.
+*/
+p.GroupStyle{
+	font: italic 12px/24px 돋움;
+}
+
+/*글꼴 색상*/
+h1.fontColor{ color:rgb(0,200,0); }
+h2.fontColor{ color:blue; }
+.FontColor{
+	color:#ff0000;
+}
+
+/*텍스트에 줄 표시하기*/
+/*
+text-decoration : none | underline | overline | line-through
+
+속성값
+none : 밑줄을 표시하지 않습니다.
+underline : 밑줄을 표시합니다.
+overline : 영역 위로 선을 그립니다.
+line-through : 영역을 가로지르는 선(취소 선)을 그립니다.
+*/
+a.noneLine{
+	text-decoration:none;
+}
+.cancelLine{
+	text-decoration:line-through;
+}
+
+/*텍스트 대,소문자 변환하기 */
+/*
+text-transform : none | capitalize | uppercase | lowercase | full-width
+
+속성 값
+none : 변환하지 않습니다.
+capitalize : 시작하는 첫 번째 글자를 대문자로 변환합니다.
+uppercase : 모든 글자를 대문자로 변환합니다.
+lowercase : 모든 글자를 소문자로 변환합니다.
+full-width : 가능한 모든 문자를 전각 문자로 변환합니다.
+*/
+.trans1{ text-transform:uppercase; }
+.trans2{ text-transform:capitalize; }
+
+/*텍스트에 그림자 효과 추가하기*/
+/*
+text-shadow : none | <가로 거리> <세로 거리> <번짐 정도> <색상>
+*/
+.shadow1{
+	color:orange; /*글자 색*/
+	text-shadow:1px 1px; /*텍스트 그림자*/
+}
+.shadow2{
+	text-shadow:5px 5px 3px #f00;
+}
+.shadow3{
+	color:#fff;
+	text-shadow:7px -7px 5px #000;
+}
+.shadow4{
+	color:#000;
+	/*그림자 여러개 사용*/
+	text-shadow:0 0 4px #ccc, 0 -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80, 2px -19px 18px #f20;
+}
+
+/*공백 처리하기*/
+/*
+white-space : normal | nowrap | pre | pre-line | pre-wrap
+
+속성 값
+normal : 여러 개의 공백을 하나로 표시합니다. 기본 값.
+nowrap : 여러 개의 공백을 하나로 표시하고 영역 너비를 넘어가는 내용은 줄을 바꾸지 않고 한 줄로 표시 합니다.
+pre : 여거 개의 공백을 그대로 표시하고 영역 너비를 넘어가는 내용은 줄을 바꾸지 않고 계속 한 줄로 표시 합니다.
+pre-line : 여러 개의 공백을 하나로 표시하고 영역 너비를 넘어가는 내용은 자동으로 줄을 바꿔 표시합니다.
+pre-wrap : 여러 개의 공백을 그대로 표시하고 영역 너비를 넘어가는 내용은 자동으로 줄을 바꿔 표시합니다.
+*/
+td.newline{ white-space:nowrap; }
+
+/*텍스트 간격 조절하기*/
+/*
+letter-spacing : normal | <크기>  //낱 글자 사이 간격
+word-spacing : normal | <크기>    //단어 사이 간격
+*/
+.letter1{ letter-spacing:0.2em; }
+.letter2{ letter-spacing:0.5m; }
+
+/*글자 쓰기 방향 지정*/
+/*
+direction: ltr | rtl
+
+속성 값
+ltr : 왼쪽에서 오른쪽으로 텍스트를 표시합니다. 기본 값입니다.
+rtl : 오른쪽에서 왼쪽으로 텍스트를 표시합니다.
+*/
+
+/*텍스트 정렬하기*/
+/*
+text-align : start | end | left | right | center | justify | match-parent
+
+속성 값
+start : 현재 텍스트 줄의 시작 위치에 맞추어 문단을 정렬합니다. left-to-right 언어라면 왼쪽으로, right-to-left 언어라면 오른쪽으로 맞추어 정렬합니다.
+end : 현재 텍스트 ㅈㄹ의 끝 위치에 맞추어 문단을 정렬합니다. left-to-right 언어라면 오른쪽으로, right-to-left 언어라면 왼쪽으로 맞추어 정렬합니다.
+left : 왼쪽에 맞추어 문단을 정렬합니다.
+right : 오른쪽에 맞추어 문단을 정렬합니다.
+center : 가운데에 맞추어 문단을 정렬합니다.
+justify : 양쪽에 맞추어 문단을 정렬합니다.
+match-parent : 부모 요소를 따라 문단을 정렬합니다. 다만, 부모 요소의 속성 값이 start나 end일 경우, 부모 요소가 left-to-right, right-to-left인지에 따라 left나 right 값으로 계산해 적용합니다.
+*/
+.align-left{ text-align:left; }
+.align-right{ text-align:right; }
+.align-center{ text-align:center; }
+.align-justift{ text-align:justify; }
+
+/*정렬 시 공백 조절하기*/
+/*
+text-justify : auto | none | inter-word | distribute
+auto : 웹 브라우저에서 자동으로 지정합니다.
+none : 정렬하지 않습니다.
+inter-word : 단어 사이의 공백을 조절해 정렬합니다.
+distribute : 인접한 글자 사이의 공백을 똑같이 맞추어 정렬합니다.
+*/
+
+/*텍스트 들여 쓰기*/
+/*
+text-indent : <크기> | <백분율>
+
+속성 값
+<크기> : 단위와 함께 들여 쓸 크기를 지정합니다. 음수 값도 사용할 수 있습니다.
+<백분율> : 부모 요소의 너비를 기준으로 상대적 크기를 지정합니다.
+*/
+.indent1{ text-indent:15px; }
+.indent2{ text-indent:5%; }
+
+/*줄 간격 조절하기*/
+/*
+line-height : normal | <숫자> | <크기> | <백분율> | inherit
+*/
+.small-line{ line-height:0.7; }
+.big-line{ line-height:2; }
+
+/*넘치는 텍스트 표기하기*/
+/*
+text-overflow: clip | ellipsis
+
+속성 값
+clip : 넘치는 텍스트를 자릅니다
+ellipsis : 말 줄임표(...)로 잘린 텍스트가 있다고 표시합니다.
+*/
+.content{
+	border:1px solid #ccc; /*테두리*/
+	width:300px; /*단락의 너비*/
+	white-space:nowrap; /*줄바꿈 안함*/
+	overflow:hidden; /*넘치는 부분 감춤*/
+	text-overflow:ellipsis; /*말 줄임표*/
+}
+.content:hover{
+	overflow:visible;
+}

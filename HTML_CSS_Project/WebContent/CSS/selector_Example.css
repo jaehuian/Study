@@ -1,0 +1,215 @@
+@charset "EUC-KR";
+/*하위 선택자*/
+/*지정한 모든 하위 요소에 스타일 적용하기*/
+#container ul{
+	border:1px dotted blue;
+}
+
+/*자식 선택자*/
+/*자식 요소에만 스타일 적용하기*/
+#container2 > ul{
+	border : 1px dotted blue;
+}
+
+/*인접 형제 선택자*/
+/*가장 가까운 형제 요소에 스타일 적용하기*/
+#container3 h1 + ul{
+	color:blue;
+	font-weight:bold;
+}
+
+/*형제 선택자*/
+/*모든 형제 요소에 스타일 적용하기*/
+#container4 h1 ~ ul{
+	color:blue;
+	font-weight:bold;
+}
+
+/*[속성] 선택자*/
+/*해당 속성을 지정한 요소에 스타일 적용하기*/
+#container5 a[href]{
+	background:yellow;
+}
+
+/*[속성=값] 선택자*/
+/*특정 값을 갖는 속성에 스타일 적용하기*/
+#container6 a[target="_blank"]{
+	padding-right:30px;
+	background:url(../Img/beach.jpg) no-repeat center right;
+}
+
+/*속성 ~= 값 선택자*/
+/*여러 값 중 특정 값이 포함된 속성에 스타일 적용하기*/
+.flat{
+	background:blue;
+	color:white;
+}
+#container7 ul{
+	list-style:none;
+}
+#container7 li{
+	display:inline-block;
+	margin:10px;
+}
+#container7 [class ~= "button"]{
+	border:2px solid black;
+	box-shadow:rgba(0,0,0,0.4) 5px 5px;
+}
+
+/*[속성 |= 값] 선택자*/
+/*
+특정 값이 포함된 속성에 스타일 적용하기
+속성 값이 지정한 값이거나 값-으로 시작하면 스타일을 적용한다
+*/
+#container8 ul{
+	list-style:none;
+}
+#container8 li{
+	display:inline-block;
+	margin:10px;
+}
+#container8 a[title |= "us"]{
+	background:url(../Img/beach.jpg) no-repeat left center;
+	padding:5px 25px;
+}
+#container8 a[title |= "jap"]{
+	background: url(../Img/apple.jpg) no-repeat left center;
+	padding: 5px 25px;
+}
+
+/*[속성 ^= 값] 선택자*/
+/*특정 값으로 시작하는 속성에 스타일 적용하기*/
+#container9 ul{
+	list-style:none;
+}
+#container9 li{
+	display:inline-block;
+	margin:10px;
+}
+#container9 a[title ^= "eng"]{
+	background: url(../Img/beach.jpg) no-repeat left center;
+	padding: 5px 25px;
+}
+#container9 a[title ^= "jap"]{
+	background: url(../Img/beach.jpg) no-repeat left center;
+	padding: 5px 25px;
+}
+#container9 a[title ^= "chin"]{
+	background: url(../Img/bg.png) no-repeat left center;
+	padding: 5px 25px;
+}
+
+/*[속성 $= 값] 선택자*/
+/*특정 값으로 끝난느 속성에 스타일 적용하기*/
+#container10 a[href $="hwp"]{
+	background: url(../Img/beach.jpg) no-repeat left center;
+	padding-right: 25px;
+}
+#container10 a[href $="xls"]{
+	background: url(../Img/bg.png) no-repeat left center;
+	padding-right: 25px;
+}
+
+/*[속성 *= 값] 선택자*/
+/*값의 일부가 일치하는 속성에 스타일 적용하기*/
+#container11 [href *= "w3"]{
+	background:blue;
+	color:white;
+}
+
+/*가상 클래스와 가상 요소*/
+/*사용자 동작에 반응하는 가상 클래스*/
+/*
+:link - 방문하지 않은 링크에 스타일 적용
+:visited - 방문한 링크에 스타일 적용
+:hover - 웹 요소에 마우스 커서를 올려놓을 때의 스타일 적용
+:active - 웹 요소를 활성화했을 때의 스타일 적용
+:focus - 웹 요소에 초점이 맞추어졌을 스타일 적용
+*/
+.navi a:link, .nave a:visited{
+	padding:10px 5px 5px 35px;
+	display:block;
+	color:blue;
+	width:150px;
+	text-decoration:none; /*밑줄 없음*/
+}
+.navi a:hover, .navi a:focus{
+	text-shadow:0px 2px 2px #000;
+	color:#FC0;
+}
+.navi a:active{
+	color:red;
+}
+
+/*UI 요소 상태에 따른 가상 클래스*/
+/*
+:enabled 와 :disabled -요소를 선택할 수 있을 때와 없을 때의 스타일
+:checked - 라디오 박스나 체크 박스에서 해당 항목을 선택했을 때의 스타일 지정
+*/
+input:disabled{
+	background:#ddd;
+	border:1px #ccc solid;
+}
+input:checked + span{
+	color:blue;
+}
+
+/*구조 가상 클래스*/
+/*
+:root - 문서 전체에 적용하기
+:nth-child(n)와 :nth-last-child(n) - 자식 요소의 위치에 따라 스타일 적용하기
+								스타일을 지정할 항목이 몇 번째에 있는지를 따져 적용
+								an+b 같은 수식을 사용할 수도 있다
+								한 부모 요소를 갖고 있어야 한다
+								
+:nth-of-type(n), :nth-last-type(n) - 특정 태그 위치에 따른 스타일 적용
+								<p> 태그나 <li> 태그가 여러 개 나열되어 있고 
+								각 태그에 id나 class를 사용하지 않은 상태에서 몇 번째에 있는 항목인지를 지정해 스타일 적용
+								
+:first-child, :last-child - 첫 번째, 마지막 요소에 스타일 적용하기
+:first-of-type, :last-of-type - 형제 관계 요소의 위치에 따라 스타일 적용하기
+:only-child, :only-of-type - 하나뿐인 자식 요소의 스타일 적용
+*/
+table tr:nth-child(2n+1){
+	background: lightgray;
+	color:black;
+}
+
+ul.navi2 li {
+  list-style-type: none; /* 불릿 없앰 */
+  display: block; /* 영역 만듦 */
+  width: 8em; /* 너비 */
+  height: 3em; /* 높이 */
+  float: left; /* 왼쪽으로 플로팅 */
+  text-align: center; /* 가운데 정렬 */
+  font-family: "Lucida Grande", sans-serif; /* 글꼴 */
+  border: 1px #818181 solid; /* 테두리 */
+  box-shadow: 1px 1px 1px #bbb; /* 박스 그림자 */
+}
+/* 메뉴 링크 스타일 */
+ul.navi2 li a {
+  display: block; /* 영역 만듦 */
+  padding: .8em .5em .5em .5em; /* 안여백 */
+  text-decoration: none; /* 밑줄 없앰 */
+  color: #292929; /* 글자색 */
+  text-shadow: 1px 1px 0px #cccccc; /* 텍스트 그림자 */
+}
+ul.navi2 li:first-child{
+	border-top-left-radius:1em;
+	border-bottom-left-radius:1em;
+}
+ul.navi2 li:last-child{
+	border-top-right-radius:1em;
+	border-bottom-right-radius:1em;
+}
+
+/*그 외 가상 클래스*/
+/*
+:target - 앵커 목적지에 스타일 적용하기
+:not - 특정 요소강 ㅏ닐 때 스타일 적용하기
+*/
+/*가상 요소*/
+/*
+::first-line, ::first-letter - 첫 번째 줄, 첫 번째 글자에 스타일 적용하기
+::before, ::after - 내용의 앞뒤에 콘텐츠 추가하기
+*/
